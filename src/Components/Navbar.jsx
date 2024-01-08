@@ -57,8 +57,8 @@ const Navbar = () => {
       <div
         className={
           !scrolled
-            ? "relative w-auto mt-8 px-4 rounded-3xl h-12 flex justify-center items-center transition ease-in-out duration-500 z-10"
-            : "relative w-auto mt-8 px-4 rounded-3xl h-12 bg-oliveGrey flex justify-center items-center transition ease-in-out duration-500 z-10"
+            ? "relative w-auto mt-8 px-4 rounded-3xl h-12 flex justify-center items-center transition ease-in-out duration-300 z-10"
+            : "relative w-auto mt-8 px-4 rounded-3xl h-12 bg-oliveGrey flex justify-center items-center transition ease-in-out duration-300 z-10"
         }
       >
         <div className="relative flex justify-center items-center">
@@ -73,13 +73,13 @@ const Navbar = () => {
                   onClick={() => {
                     
                     setClicked(item.id)
-                    
+
                     if (pathname === '/'){
                       item.name !== "Blog" ? document.getElementById(item.name).scrollIntoView({behavior: "smooth", block: "center",})
                       : navigate('/Blog')
                     } 
 
-                    if (pathname === '/Blog') {
+                    if (pathname.includes('/Blog')) {
                       item.name !== "Blog" ? navigate('/')
                       : navigate('/Blog')
                     }

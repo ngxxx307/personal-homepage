@@ -1,5 +1,5 @@
-#h1 Kurt's Ng Personal Hompage
-#h2 Tech used:
+# Kurt's Ng Personal Hompage
+## Tech used:
 1. React
 2. React Query
 3. Tailwind CSS

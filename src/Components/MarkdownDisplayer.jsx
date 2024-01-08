@@ -1,16 +1,17 @@
-import React from 'react'
-import Markdown from "react-markdown";
+import React from "react";
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import remarkTextr from 'remark-textr'
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import emoji from "remark-emoji";
 
-const MarkdownDisplayer = ({markdown}) => {
+const MarkdownDisplayer = ({ markdown }) => {
   return (
-    <div>
-       <Markdown
+    <div className="prose">
+      <ReactMarkdown
         children={markdown}
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[[remarkGfm], [emoji]]}
         components={{
           code(props) {
             const { children, className, node, ...rest } = props;
@@ -34,7 +35,7 @@ const MarkdownDisplayer = ({markdown}) => {
         }}
       />
     </div>
-  )
-}
+  );
+};
 
-export default MarkdownDisplayer
+export default MarkdownDisplayer;

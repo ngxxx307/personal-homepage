@@ -1,28 +1,23 @@
-import React from 'react'
-import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-const markdown = `A paragraph with *emphasis* and **strong importance**.
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
-
-* Lists
-* [ ] todo
-* [x] done
-
-A table:
-
-| a | b |
-| 1 | 2 |
-`
+import { fadeInDropAnimation } from "../Animation/Animation"
+import ArticleList from "../Components/Blog/ArticleList";
 
 const Blog = () => {
-    return (
-        <div>
-            <Markdown remarkPlugins={[remarkGfm]}>
-                {markdown}
-            </Markdown>
-        </div>
-    )
-}
+  const [createPopup, setCreatePopup] = useState(false);
 
-export default Blog
+  return (
+    <div>
+      <div className="px-24">
+        <motion.p className="text-oliveGreen font-syne text-center text-9xl my-8 font-semibold" {...fadeInDropAnimation}>
+            Blog
+        </motion.p>
+      </div>
+      <ArticleList />
+    </div>
+  );
+};
+
+export default Blog;

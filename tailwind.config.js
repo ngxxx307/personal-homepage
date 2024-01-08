@@ -1,4 +1,4 @@
-
+/** @type {import('tailwindcss').Config} */
 const withMT = require("@material-tailwind/react/utils/withMT");
  
 module.exports = withMT({
@@ -11,7 +11,8 @@ module.exports = withMT({
       fontFamily: {
         inter: ["Inter"],
         cormorant: ["Cormorant Garamond"],
-        syne: ["Syne"]
+        syne: ["Syne"],
+        roboto: ["Roboto"],
       }
     },
     colors: {
@@ -32,5 +33,7 @@ module.exports = withMT({
       oldLace:"#faf5eb"
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 });

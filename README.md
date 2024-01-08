@@ -10,6 +10,12 @@ Run the following command to start the dev environment
 npm i
 npm run dev
 ```
+
+## Project Structure
++ Page (e.g. ./src/Page/Homepage.jsx)
+     + Section (e.g. /src/Components/Home.jsx)
+        + Components (e.g. /src/Components/HomePage/PhotoSlider.jsx)
+
 ## TODO LIST:
 1. Add jwt authentication
 2. Add Styling for markdown displayer

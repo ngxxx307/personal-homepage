@@ -17,7 +17,8 @@ npm run dev
         + Components (e.g. /src/Components/HomePage/PhotoSlider.jsx)
 
 ## TODO LIST:
-1. Add jwt authentication
-2. Add Styling for markdown displayer
-3. Add express.js and MongoDB server
-4. Deploy app using nginx
+1. Handle user login token expired
+2. Styling Markdown Displayer
+3. Add more functionality to login page
+4. Style login page
+5. Deploy app using nginx

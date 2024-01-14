@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { fadeInDropAnimation } from "../Animation/Animation"
 import ArticleList from "../Components/Blog/ArticleList";
 
 const Blog = () => {
-  const [createPopup, setCreatePopup] = useState(false);
-
   return (
     <div>
       <div className="px-24">

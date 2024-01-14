@@ -2,8 +2,10 @@
 ## Tech used:
 1. React
 2. React Query
-3. Tailwind CSS
-4. FramerMotion
+3. Redux Toolkit
+4. jwt
+6. Tailwind CSS
+7. FramerMotion
    
 Run the following command to start the dev environment
 ```

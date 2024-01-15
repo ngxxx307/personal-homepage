@@ -25,6 +25,6 @@ npm run dev
         + Components (e.g. /src/Components/HomePage/PhotoSlider.jsx)
 
 ## TODO LIST:
-5. Deploy app using nginx
+1. Deploy app using nginx
 3. Add more functionality to login page
 6. Add Contact functionality

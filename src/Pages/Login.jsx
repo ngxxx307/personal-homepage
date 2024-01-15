@@ -37,8 +37,9 @@ const Login = () => {
       dispatch(authAction.setAuth({...res.data}))
       navigate('/Blog')
     } catch (err) {
+      setIsPending(false);
       console.log(err)
-      window.alert(err.response.data.message);
+      window.alert(err);
     }
   };
 

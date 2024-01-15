@@ -12,7 +12,7 @@ export const getArticle = (id) =>
 
 export const postArticleRequest = (newArticle) => {
     const { title, subtitle, markdown, imgURL, token } = newArticle
-    let header = ""
+    let header = {}
 
     if (token) {
         header = {"authorization": `Bearer ${token}`}
@@ -25,7 +25,7 @@ export const postArticleRequest = (newArticle) => {
 
 export const deleteArticleRequest = (data) => {
     const {id, token} = data
-    let header = ""
+    let header = {}
 
     if (token) {
         header = {"authorization": `Bearer ${token}`}
@@ -40,7 +40,7 @@ export const deleteArticleRequest = (data) => {
 
 export const editArticleRequest = (article) => {
     const { title, subtitle, markdown, imgURL, token } = article
-    let header = ""
+    let header = {}
 
     if (token) {
         header = {"authorization": `Bearer ${token}`}

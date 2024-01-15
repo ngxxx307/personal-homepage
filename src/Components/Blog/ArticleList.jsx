@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 
-import { CreateArticle, Logout } from "../Popup/Popup";
+import { CreateArticle, Logout, ErrorMessage } from "../Popup/Popup";
 import { getArticles } from "../../Query/ArticlesQuery";
 import CreateButton from "../../assets/Buttons/CreateButton.png";
 import LogoutButton from "../../assets/Buttons/LogoutButton.png";
@@ -11,10 +11,8 @@ import ArticleCell from "../ArticleCell";
 const ArticleList = () => {
   const [createPopup, setCreatePopup] = useState(false);
   const [logoutPopup, setLogoutPopup] = useState(false);
+  const [errorPopup, setErrorPopup] = useState(null);
   const authState = useSelector((state) => state.auth);
-
-  console.log("authState", authState);
-  console.log(authState?.roles?.includes("admin"));
 
   const queryClient = useQueryClient();
   const result = getArticles();
@@ -61,9 +59,10 @@ const ArticleList = () => {
         )}
       </div>
       {createPopup && (
-        <CreateArticle popup={createPopup} setPopup={setCreatePopup} />
+        <CreateArticle popup={createPopup} setPopup={setCreatePopup} errorPopup={errorPopup} setErrorPopup={setErrorPopup} />
       )}
       {logoutPopup && <Logout popup={logoutPopup} setPopup={setLogoutPopup} />}
+      {errorPopup && <ErrorMessage error={errorPopup} setError={setErrorPopup} />}
     </div>
   );
 };

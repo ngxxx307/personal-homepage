@@ -3,10 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSelector, useDispatch } from "react-redux";
 
 import MarkdownDisplayer from "../MarkdownDisplayer";
-import {
-  deleteArticleRequest,
-  editArticleRequest,
-} from "../../Requests/Request";
+import { postArticleRequest, editArticleRequest, deleteArticleRequest } from "../../Requests/Request";
 import {
   postArticle,
   editArticle,
@@ -28,9 +25,21 @@ const useField = (initialState) => {
   };
 };
 
-export const CreateArticle = ({ popup, setPopup }) => {
+export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
   const authState = useSelector((state) => state.auth);
-  const createArticleMutation = postArticle();
+  const createArticleMutation = useMutation({
+    mutationFn: postArticleRequest,
+    onSuccess: () => {
+      setPopup(!popup);
+      window.location.reload();
+    },
+    onError: (error) => {
+      setErrorPopup(error)
+      if (error.response.status === 440) {
+        setPopup(!popup);
+      }
+    },
+  });
 
   const title = useField("");
   const subtitle = useField("");
@@ -68,13 +77,12 @@ export const CreateArticle = ({ popup, setPopup }) => {
         <div className="flex flex-row-reverse w-full">
           <button
             onClick={() => {
-              setPopup(!popup);
               createArticleMutation.mutate({
                 title: title.value,
                 subtitle: subtitle.value,
                 imgURL: imgURL.value,
                 markdown: markdown.value,
-                token: authState.token,
+                token: authState.accessToken,
               });
             }}
             className="z-50 bg-soapStone rounded-2xl p-2 m-2"
@@ -93,10 +101,21 @@ export const CreateArticle = ({ popup, setPopup }) => {
   );
 };
 
-export const DeleteArticle = ({ popup, setPopup, id }) => {
+export const DeleteArticle = ({ popup, setPopup, errorPopup, setErrorPopup ,id }) => {
   const authState = useSelector((state) => state.auth);
-  const queryClient = useQueryClient();
-  const deleteArticleMutation = deleteArticle();
+  const deleteArticleMutation = useMutation({
+    mutationFn: deleteArticleRequest,
+    onSuccess: () => {
+      window.location.reload();
+    },
+    onError: (error) => {
+      console.log(error);
+      setErrorPopup(error)
+      if (error.response.status === 440) {
+        setPopup(!popup);
+      }
+    },
+  });
 
   return (
     <div>
@@ -112,7 +131,7 @@ export const DeleteArticle = ({ popup, setPopup, id }) => {
               {
                 setPopup(!popup);
               }
-              deleteArticleMutation.mutate({ id, token: authState.token });
+              deleteArticleMutation.mutate({ id, token: authState.accessToken });
             }}
           >
             Delete
@@ -129,10 +148,22 @@ export const DeleteArticle = ({ popup, setPopup, id }) => {
   );
 };
 
-export const EditArticle = ({ popup, setPopup, article }) => {
+export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, article }) => {
   const authState = useSelector((state) => state.auth);
 
-  const putArticleMutation = editArticle();
+  const putArticleMutation = useMutation({
+    mutationFn: editArticleRequest,
+    onSuccess: () => {
+      window.location.reload();
+    },
+    onError: (error) => {
+      console.log(error);
+      setErrorPopup(error)
+      if (error.response.status === 440) {
+        setPopup(!popup);
+      }
+    },
+  });
 
   const title = useField(article.title);
   const subtitle = useField(article.subtitle);
@@ -177,7 +208,7 @@ export const EditArticle = ({ popup, setPopup, article }) => {
                 imgURL: imgURL.value,
                 markdown: markdown.value,
                 id: article.id,
-                token: authState.token,
+                token: authState.accessToken,
               });
             }}
             className="z-50 bg-soapStone rounded-2xl p-2 m-2"
@@ -227,21 +258,26 @@ export const Logout = ({ popup, setPopup, id }) => {
   );
 };
 
-export const TokenExpired = ({ popup, setPopup, id }) => {
+export const ErrorMessage = ({ error, setError, id }) => {
   const dispatch = useDispatch();
+
+  console.log("error:", error)
 
   return (
     <div>
       <div className="fixed top-[50%] left-[50%] z-50 -translate-x-1/2 -translate-y-1/2 grid items-center rounded-xl bg-amber-50 text-center p-4">
         <div className="p-4">
-          <p>Your login session has expired </p>
+        <p>Error</p>
+          <p>{error.response.data.message}</p>
         </div>
         <div>
           <button
             className="bg-red-500 rounded-md px-2 py-1 text-white "
             onClick={() => {
-              setPopup(!popup);
-              window.location.reload()
+              setError(null);
+              if (error.response.status === 440) {
+                dispatch(authAction.deleteAuth());
+              }
             }}
           >
             Okay
@@ -251,7 +287,10 @@ export const TokenExpired = ({ popup, setPopup, id }) => {
       <div
         id="popup-overlay"
         onClick={() => {
-          setPopup(!popup);
+          setError(null);
+          if (error.response.status === 440) {
+            dispatch(authAction.deleteAuth());
+          }
         }}
       />
     </div>

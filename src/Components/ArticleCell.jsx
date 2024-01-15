@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from "react-redux";
 
 import { DeleteArticle, EditArticle } from './Popup/Popup'
+import { ErrorMessage } from './Popup/Popup';
 import DeleteButton from "../assets/Buttons/DeleteButton.png"
 import EditButton from "../assets/Buttons/EditButton.png"
 
@@ -11,6 +12,7 @@ const ArticleCell = ({article}) => {
   
   const [deletePopup, setDeletePopup] = useState(false)
   const [editPopup, setEditPopup] = useState(false)
+  const [errorPopup, setErrorPopup] = useState(null);
 
   return (
     <div>
@@ -29,8 +31,9 @@ const ArticleCell = ({article}) => {
             </button>
           </div>}
         </div>
-        { deletePopup && <DeleteArticle popup={deletePopup} setPopup={setDeletePopup} id={article.id} />}
-        { editPopup && <EditArticle popup={editPopup} setPopup={setEditPopup} article={article} />}
+        { deletePopup && <DeleteArticle popup={deletePopup} setPopup={setDeletePopup} id={article.id} errorPopup={errorPopup} setErrorPopup={setErrorPopup} />}
+        { editPopup && <EditArticle popup={editPopup} setPopup={setEditPopup} article={article} errorPopup={errorPopup} setErrorPopup={setErrorPopup} />}
+        { errorPopup && <ErrorMessage error={errorPopup} setError={setErrorPopup} />}
     </div>
   )
 }

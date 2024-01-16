@@ -17,6 +17,7 @@ const useTextField = () => {
 const Contact = () => {
   const name = useTextField();
   const age = useTextField();
+  const message = useTextField();
 
   const handleSubmit = (e) => {
       console.log(e)
@@ -32,8 +33,9 @@ const Contact = () => {
           <form className="flex flex-col m-auto" onSubmit={handleSubmit}>
               <input placeholder='Name' value={name.value} onChange={name.onChange} className="block my-1 rounded-sm p-2 bg-transparent outline outline-oliveGreen outline-2 focus:outline-4" />
               <input placeholder='Email' value={age.value} onChange={age.onChange} className="block my-1 rounded-sm p-2 bg-transparent outline outline-oliveGreen outline-2 focus:outline-4" />
-              <textarea placeholder='Message' value={age.value} onChange={age.onChange} className="block my-1 rounded-sm min-h-32 p-2 bg-transparent outline outline-oliveGreen outline-2 focus:outline-4" />
-            <button className="ml-auto">
+              <textarea placeholder='Message' value={message.value} onChange={message.onChange} className="block my-1 rounded-sm min-h-32 p-2 bg-transparent outline outline-oliveGreen outline-2 focus:outline-4" />
+            <button className="ml-auto rounded-lg bg-oliveGreen px-2 py-1 text-white font-syne">
+              Submit
             </button>
           </form>
         </div>

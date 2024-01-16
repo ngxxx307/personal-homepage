@@ -10,19 +10,19 @@ const Article = () => {
     const id = useParams().id
 
     useEffect(()=> {
-        getArticle(id).then(res => setArticle(res))
+        axios.get(`http://localhost:3001/api/article/${id}`).then(res => setArticle(res.data))
     }, [])
 
-    console.log(article)
-
     return (
-        <div className='m-24 p-24 bg-soapStone rounded-2xl bg-opacity-40 '>
-            <div>
-                <h1>{article.title}</h1>
-                <h2>{article.subtitle}</h2>
-                <p>{article.date}</p>
+        <div className='p-24'>
+            <div className='p-24 bg-soapStone rounded-2xl bg-opacity-40 '>
+                <div className='m-10'>
+                    <h1 className='text-5xl font-bold	'>{article?.title}</h1>
+                    <h2 className=' text-gray-500 font-normal'>{article?.subtitle}</h2>
+                    <p className='text-gray-500 font-normal'>{article?.updatedAt && new Date(article.updatedAt).toLocaleDateString('en-US')}</p>
+                </div>
+                <MarkdownDisplayer markdown={article?.markdown} className='list-disc' />
             </div>
-            <MarkdownDisplayer markdown={article.markdown} className='list-disc' />
         </div>
     )
 }

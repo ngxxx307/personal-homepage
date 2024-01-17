@@ -26,7 +26,7 @@ const ArticleList = () => {
   const articles = result.data;
 
   return (
-    <div className="px-24">
+    <div className="px-2 lg:px-24">
       <div
         id="BlogList"
         className=" bg-soapStone rounded-2xl bg-opacity-40 divide-y divide-dark w-auto"

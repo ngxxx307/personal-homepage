@@ -10,7 +10,7 @@ const Card = ({ title, text, cardColor, content, aspectRatio = 'aspect-square' }
                 <div className="font-semibold font-syne text-normal text-oliveDark">
                     {text}
                 </div>
-                <div className={`ml-auto mr-auto max-w-md p-16 ${aspectRatio}`}>
+                <div className={`ml-auto mr-auto max-w-md p-2 lg:p-16 ${aspectRatio}`}>
                     {content}
                 </div>
             </div>

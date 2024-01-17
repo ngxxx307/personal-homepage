@@ -41,18 +41,14 @@ const Home = () => {
         className=" text-oliveGreen font-syne text-center py-10"
         {...fadeInDropAnimation}
       >
-        <p className="text-9xl my-2 font-semibold ">Hi. This Is Kurt.</p>
-        <p className="text-6xl my-2 font-normal">
+        <p className="text-7xl lg:text-9xl my-2 font-semibold ">Hi. This Is Kurt.</p>
+        <p className="text-3xl lg:text-6xl my-2 font-normal">
           A Software Developer and Data Enthusiast.
         </p>
       </motion.div>
       <div>
         <div className="flex flex-row flex-wrap w-auto overflow-hidden">
-          <motion.div
-            className="w-full lg:w-2/5 my-10 "
-            {...fadeInDropAnimation}
-            transition={{ duration: 0.3, delay: 0.4 }}
-          >
+          <motion.div className="w-full lg:w-2/5 my-10 " {...fadeInDropAnimation} transition={{ duration: 0.3, delay: 0.4 }}>
             <Card
               title="Frontend Tools"
               cardColor="bg-purple"

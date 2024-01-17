@@ -37,14 +37,6 @@
 }
 
 @layer utilities {
-  html, body {  
-    display:flex;
-    margin:0;
-    padding:0; 
-    /* overflow-x: hidden; */
-    width: 100dvw
-}
-
   .img-slider-img {
     object-fit: contain;
     width: 100%;

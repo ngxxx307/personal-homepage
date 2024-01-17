@@ -9,10 +9,10 @@ const About = () => {
   return (
     <div>
       <div id="About" className=" text-oliveGreen font-syne text-center py-10">
-        <motion.p className="text-9xl my-2 font-semibold " {...fadeInDropAnimation}>
+        <motion.p className="text-7xl lg:text-9xl my-2 font-semibold " {...fadeInDropAnimation}>
           About Me.
         </motion.p>
-        <motion.div className="flex flex-wrap w-full px-12 py-10" {...fadeInDropAnimation} transition={{ duration: 0.3, delay: 0.4 }}>
+        <motion.div className="flex flex-wrap w-full px-0 lg:px-12 py-10" {...fadeInDropAnimation} transition={{ duration: 0.3, delay: 0.4 }}>
           <div className="w-full lg:w-1/4 px-10">
             <img src="https://www.seanhalpin.xyz/about/faces.jpg" className="rounded-t-full"></img>
           </div>

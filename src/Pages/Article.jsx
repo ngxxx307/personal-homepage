@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 import MarkdownDisplayer from '../Components/MarkdownDisplayer'
+import { getArticle } from '../Requests/Request'
 
 const Article = () => {
     const [article, setArticle] = useState({markdown: null})
     const id = useParams().id
 
     useEffect(()=> {
-        axios.get(`http://localhost:3001/api/article/${id}`).then(res => setArticle(res.data))
+        getArticle(id).then(res => setArticle(res))
     }, [])
 
     return (

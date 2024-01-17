@@ -7,10 +7,11 @@ export const getArticles = () =>
         return res.data
     })
 
-export const getArticle = (id) => 
-    axios.get(`${baseURL}/api/article/${id}`).then(res => {
+export const getArticle = (id) => {
+    return axios.get(`${baseURL}/api/article/${id}`).then(res => {
+        console.log(res.data)
         return res.data
-    })
+    })}
 
 export const postArticleRequest = (newArticle) => {
     const { title, subtitle, markdown, imgURL, token } = newArticle

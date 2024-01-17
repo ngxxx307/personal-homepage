@@ -35,7 +35,7 @@ const DatabaseIcons = [
 
 const Home = () => {
   return (
-    <div className="pt-20 flex flex-col relative my-0 min-h-screen">
+    <div className="flex flex-col relative min-h-screen">
       <motion.div
         id="Home"
         className=" text-oliveGreen font-syne text-center py-10"
@@ -49,7 +49,7 @@ const Home = () => {
       <div>
         <div className="flex flex-row flex-wrap w-auto overflow-hidden">
           <motion.div
-            className="w-2/5 my-10 overflow-hidden"
+            className="w-full lg:w-2/5 my-10 "
             {...fadeInDropAnimation}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
@@ -62,7 +62,7 @@ const Home = () => {
             />
           </motion.div>
           <motion.div
-            className="w-3/5 my-10"
+            className="w-full lg:w-3/5 my-10"
             {...fadeInDropAnimation}
             transition={{ duration: 0.3, delay: 0.4 }}
           >
@@ -75,7 +75,7 @@ const Home = () => {
               aspectRatio="aspect-auto"
             />
           </motion.div>
-          <motion.div className="w-3/5 my-10" {...fadeInDropAnimation}>
+          <motion.div className="w-full lg:w-3/5 my-10" {...fadeInDropAnimation}>
             <Card
               className="p-16"
               title="Database"
@@ -85,7 +85,7 @@ const Home = () => {
               aspectRatio="aspect-auto"
             />
           </motion.div>
-          <motion.div className="w-2/5 my-10" {...fadeInDropAnimation}>
+          <motion.div className="w-full lg:w-2/5 my-10" {...fadeInDropAnimation}>
             <Card
               title="Machine Learning"
               cardColor="bg-apricot"

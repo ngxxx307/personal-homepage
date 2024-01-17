@@ -9,7 +9,7 @@ import {
 
 const Homepage = () => {
   return (
-    <div className="px-24"> 
+    <div className="px-4 lg:px-24"> 
       <Home />
       <About />
       <Contact />

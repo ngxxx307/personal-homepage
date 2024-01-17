@@ -7,7 +7,7 @@ import { fadeInDropAnimation } from "../../Animation/Animation";
 import reactIcon from "../../assets/FrontendIcon/react.png";
 import htmlIcon from "../../assets/FrontendIcon/html.png";
 import reduxIcon from "../../assets/FrontendIcon/redux.png";
-import cssIcon from "../../assets/FrontendIcon/css.png";
+import cssIcon from "../../assets/FrontendIcon/CSS.png";
 import nodejsIcon from "../../assets/BackendIcon/nodejs.png";
 import expressIcon from "../../assets/BackendIcon/expressjs.png";
 import transformerImage from "../../assets/MLIcon/machineLearning.png";

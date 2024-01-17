@@ -53,7 +53,7 @@ const Navbar = () => {
   }, [clicked])
 
   return (
-    <div className="w-full sticky top-0 justify-center items-center z-10 hidden lg:flex ">
+    <div className="w-full sticky top-0 justify-center items-center z-10 flex ">
       <div
         className={
           !scrolled
@@ -66,7 +66,7 @@ const Navbar = () => {
             return (
               <div
                 key={item.id}
-                className="flex h-8 w-28 justify-center items-center"
+                className="flex h-8 w-20 lg:w-28 justify-center items-center"
               >
                 <button
                   className=" text-oliveGreen font-inter font-medium mx-20 z-20"
@@ -92,7 +92,7 @@ const Navbar = () => {
           })}
           <div
             className={
-              "transition-all rounded-xl bg-white opacity-60 absolute w-28 h-8"
+              "transition-all rounded-xl bg-white opacity-60 absolute w-20 lg:w-28 h-8"
             }
             style={{ left: `${25 * clicked - 25}%` }}
           />

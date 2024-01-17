@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 import { CreateArticle, Logout, ErrorMessage } from "../Popup/Popup";
+import { getArticles } from '../../Requests/Request'
 import CreateButton from "../../assets/Buttons/CreateButton.png";
 import LogoutButton from "../../assets/Buttons/LogoutButton.png";
 import ArticleCell from "../ArticleCell";
@@ -16,10 +18,7 @@ const ArticleList = () => {
   const queryClient = useQueryClient();
   const result = useQuery({
     queryKey: ["articles"],
-    queryFn: () =>
-      axios.get(baseURL + "/api/article").then((res) => {
-        return res.data;
-      }),
+    queryFn: getArticles,
   });
 
   if (result.isLoading) {

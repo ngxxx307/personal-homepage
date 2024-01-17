@@ -1,12 +1,14 @@
 import axios from 'axios'
 
+const baseURL = import.meta.env.VITE_BACKEND_BASEURL
+
 export const getArticles = () => 
-    axios.get("http://localhost:3001/api/articles").then(res => {
+    axios.get(`${baseURL}/api/article`).then(res => {
         return res.data
     })
 
 export const getArticle = (id) => 
-    axios.get(`http://localhost:3001/articles/${id}`).then(res => {
+    axios.get(`${baseURL}/api/article/${id}`).then(res => {
         return res.data
     })
 
@@ -18,7 +20,7 @@ export const postArticleRequest = (newArticle) => {
         header = {"authorization": `Bearer ${token}`}
     }
 
-    return axios.post("http://localhost:3001/api/article", {title, subtitle, markdown, imgURL}, {headers: header}).then(res => {
+    return axios.post(`${baseURL}/api/article`, {title, subtitle, markdown, imgURL}, {headers: header}).then(res => {
         return res.data
     })
 }
@@ -33,7 +35,7 @@ export const deleteArticleRequest = (data) => {
 
     console.log("header", header)
 
-    return axios.delete(`http://localhost:3001/api/article/${id}`, {headers: header}).then(res => {
+    return axios.delete(`${baseURL}/api/article/${id}`, {headers: header}).then(res => {
         return res.data
     })
 }
@@ -46,7 +48,7 @@ export const editArticleRequest = (article) => {
         header = {"authorization": `Bearer ${token}`}
     }
 
-    return axios.put(`http://localhost:3001/api/article/${article.id}`, {title, subtitle, markdown, imgURL}, {headers: header}).then(res => {
+    return axios.put(`${baseURL}/api/article/${article.id}`, {title, subtitle, markdown, imgURL}, {headers: header}).then(res => {
         return res.data
     })
 }

@@ -16,7 +16,7 @@ function App() {
     <Provider store={store}>
     <QueryClientProvider client={queryClient}>
         <Router>
-          <div className="background min-h-screen min-w-screen relative">
+          <div className="background min-h-screen w-screen relative">
             <Navbar />
             <Routes>
               <Route path="/" element={<Homepage />} />

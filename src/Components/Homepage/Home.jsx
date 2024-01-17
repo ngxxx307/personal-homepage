@@ -35,7 +35,7 @@ const DatabaseIcons = [
 
 const Home = () => {
   return (
-    <div className="pt-20">
+    <div className="pt-20 flex flex-col relative my-0 min-h-screen">
       <motion.div
         id="Home"
         className=" text-oliveGreen font-syne text-center py-10"

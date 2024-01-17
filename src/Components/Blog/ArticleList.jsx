@@ -29,7 +29,7 @@ const ArticleList = () => {
     <div className="px-24">
       <div
         id="BlogList"
-        className=" bg-soapStone rounded-2xl bg-opacity-40 divide-y divide-dark"
+        className=" bg-soapStone rounded-2xl bg-opacity-40 divide-y divide-dark w-auto"
         onClick={() =>
           queryClient.invalidateQueries({ queryKey: ["articles"] })
         }

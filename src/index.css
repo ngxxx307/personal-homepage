@@ -19,6 +19,8 @@
     );
     animation: gradient 10s ease infinite;
     background-size: 200% 200%;
+    margin:0;
+    padding:0; 
   }
 
   @keyframes gradient {
@@ -35,6 +37,13 @@
 }
 
 @layer utilities {
+  html, body {  
+    display:flex;
+    margin:0;
+    padding:0; 
+    width: 100vw */
+}
+
   .img-slider-img {
     object-fit: cover;
     width: 100%;

@@ -54,7 +54,6 @@ const Home = () => {
             transition={{ duration: 0.3, delay: 0.4 }}
           >
             <Card
-              className="p-16"
               title="Frontend Tools"
               cardColor="bg-purple"
               text="ReactJS, Redux, HTML, CSS"
@@ -67,7 +66,6 @@ const Home = () => {
             transition={{ duration: 0.3, delay: 0.4 }}
           >
             <Card
-              className="p-16"
               title="Backend Tools"
               cardColor="bg-aqua"
               text="Node.js Express.js"
@@ -77,7 +75,6 @@ const Home = () => {
           </motion.div>
           <motion.div className="w-full lg:w-3/5 my-10" {...fadeInDropAnimation}>
             <Card
-              className="p-16 h-full"
               title="Database"
               cardColor="bg-skyblue"
               text="Mysql, MongoDB"

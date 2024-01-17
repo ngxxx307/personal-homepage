@@ -19,7 +19,7 @@ const PhotoSlider = ({ images }) => {
 
     return (
         <div style={{ width: "100%", height: "100%", position: "relative" }}>
-            <div style={{ width: "100%", height: "100%", display: "flex", overflow: "hidden", alignItems: "center", flexGrow: 0, flexShrink: 0 }}>
+            <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", flexGrow: 0, flexShrink: 0 }}>
                 {images.map(image => {
                     return <img key={image.alt} alt={image.alt} src={image.url} className='img-slider-img' style={{ translate: `${-100 * imageIndex}%` }}></img>
                 })}

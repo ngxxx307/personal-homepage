@@ -77,7 +77,7 @@ const Home = () => {
           </motion.div>
           <motion.div className="w-full lg:w-3/5 my-10" {...fadeInDropAnimation}>
             <Card
-              className="p-16"
+              className="p-16 h-full"
               title="Database"
               cardColor="bg-skyblue"
               text="Mysql, MongoDB"

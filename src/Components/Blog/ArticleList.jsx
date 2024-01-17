@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import axios from "axios";
 
 import { CreateArticle, Logout, ErrorMessage } from "../Popup/Popup";
 import { getArticles } from '../../Requests/Request'

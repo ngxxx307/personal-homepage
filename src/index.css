@@ -39,9 +39,10 @@
 @layer utilities {
   html, body {  
     display:flex;
+    flex-direction: column;
     margin:0;
     padding:0; 
-    width: 100vw */
+    width: 100vw
 }
 
   .img-slider-img {

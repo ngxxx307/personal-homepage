@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
-import { getArticle } from '../Query/ArticlesQuery'
 import MarkdownDisplayer from '../Components/MarkdownDisplayer'
 
 const Article = () => {

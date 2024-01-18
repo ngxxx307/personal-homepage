@@ -16,12 +16,11 @@ const ArticleCell = ({article}) => {
 
   return (
     <div>
-      <Link to={`/Blog/Article/${article.id}`} className=' text-dark no-underline'>
-       <h1>{article.title}</h1>
-        <p>{article.subtitle}</p>
+      <Link to={`/Blog/Article/${article.id}`} className='  no-underline'>
+       <h1 className='text-oliveDark font-roboto font-semibold'>{article.title}</h1>
       </Link>
         <div className='grid grid-cols-2'>
-          <div className='text-left w-full'>{new Date(article.createdAt).toDateString()}</div>
+          <div className='text-left w-full font-roboto text-medium'>{new Date(article.createdAt).toDateString()}</div>
           {authState?.accessToken && authState?.roles?.includes("admin") && <div className='flex flex-row-reverse'>
             {<button>
               <img src={DeleteButton} className='object-contain	h-6 w-6 mx-1' onClick={() => setDeletePopup(!deletePopup)}></img>

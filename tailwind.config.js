@@ -13,6 +13,8 @@ module.exports = withMT({
         cormorant: ["Cormorant Garamond"],
         syne: ["Syne"],
         roboto: ["Roboto"],
+        openSans:["Open Sans"],
+        merriweather: ["Merriweather"],
       }
     },
     colors: {
@@ -21,7 +23,7 @@ module.exports = withMT({
       oliveGreen: "#0B7542",
       oliveWhite: "#b9f8da",
       oliveGrey: "#F1F1F1",
-      oliveDark: "#042f1a",
+      oliveDark: "#032e0e",
       oliveYellow:"#FAFFF0 ",
       purple: "#d094e5",
       apricot: "#e8b89c",
@@ -30,7 +32,8 @@ module.exports = withMT({
       soapStone: "#EDE7DE",
       merino: "#d1ebe7",
       lightMerino: "#fdfdfd",
-      oldLace:"#faf5eb"
+      oldLace:"#faf5eb",
+      teal: "#16d9cf"
     },
   },
   plugins: [

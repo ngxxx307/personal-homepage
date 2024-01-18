@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { useState} from "react";
 import { login, register } from "../Requests/AuthRequests";
@@ -6,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { authAction } from "../Store/Slice/authSlice";
 import { useDispatch } from "react-redux";
 
-import "./Login.css";
 import user_icon from "../assets/LoginIcon/user.png";
 import password_icon from "../assets/LoginIcon/password.jpg";
 import email_icon from "../assets/LoginIcon/email.jpg";

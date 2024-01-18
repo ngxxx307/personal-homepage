@@ -35,17 +35,19 @@ const About = () => {
       </div>
       <div className="flex flex-wrap h-full">
         <div className="w-full lg:w-1/3 group relative flex items-center p-10">
+        <div className="group/UMN relative">
           <img className="w-full rounded-md group-hover:-translate-y-4 transition-all ease=in" src={gopherIcon}></img>
-          <div className="absolute flex flex-row-reverse items-center rounded-md px-10 opacity-0 bottom-0 left-0 h-[15%] w-full group-hover:opacity-70 group-hover:-translate-y-4 transition-all ease-in-out duration-300">
+          <div className="absolute flex flex-row-reverse items-center rounded-md lg:px-10 opacity-0 bottom-0 left-0 h-[15%] w-full group-hover/UMN:opacity-70 group-hover/UMN:-translate-y-4 transition-all ease-in-out duration-300">
                 <div className="rounded-md text-center bg-oliveGrey p-2 font-inter font-medium text-oliveDark">
                   University of Minnesota
                 </div>
             </div>
         </div>
+        </div>
         <div className="w-full lg:w-2/3  px-10">
           <div className="group relative">
             <img className="relative rounded-md group-hover:-translate-y-4 transition-all ease-in-out duration-300" src={lseIcon}></img>
-            <div className="absolute flex flex-row-reverse items-center rounded-md px-10 opacity-0 bottom-0 left-0 h-[15%] w-full group-hover:opacity-70 group-hover:-translate-y-4 transition-all ease-in-out duration-300">
+            <div className="absolute flex flex-row-reverse items-center rounded-md lg:px-10 opacity-0 bottom-0 left-0 h-[15%] w-full group-hover:opacity-70 group-hover:-translate-y-4 transition-all ease-in-out duration-300">
                 <div className="rounded-md text-center bg-oliveGrey p-2 font-inter font-medium text-oliveDark">
                   London School of Economics
                 </div>

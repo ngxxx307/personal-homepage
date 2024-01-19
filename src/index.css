@@ -226,6 +226,10 @@
 @tailwind base;
 
 @layer base {
+  body {
+    overflow: auto !important;
+    overflow-x: auto !important;;
+  }
   h1 {
     @apply text-2xl;
   }
@@ -269,6 +273,7 @@
     vertical-align: inherit;
     padding: 0px 10px;
     text-align: left;
+    text-wrap: wrap;
   }
 
   th{

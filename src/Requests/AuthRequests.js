@@ -1,11 +1,22 @@
-import axios from 'axios'
+import api from './BaseAPI'
 
 export const login = (user) => 
-    axios.post("http://localhost:3001/api/auth", user).then(res => {
+    api.post("api/auth", user)
+    .then(res => {
         return res
     })
 
 export const register = (user) => 
-    axios.post("http://localhost:3001/api/auth/register", user).then(res => {
+    api.post("api/auth/register", user).then(res => {
+        return res
+    })
+
+export const refresh = () => 
+    api.post("api/auth/refresh").then(res => {
+        return res
+    })
+
+export const logout = () => 
+    api.post("api/auth/logout").then(res => {
         return res
     })

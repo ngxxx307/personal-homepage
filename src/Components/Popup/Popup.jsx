@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import MarkdownDisplayer from "../MarkdownDisplayer";
 import { postArticleRequest, editArticleRequest, deleteArticleRequest } from "../../Requests/Request";
 import { authAction } from "../../Store/Slice/authSlice";
+import { useAxiosInterceptor } from "../../Requests/BaseAPI";
 
 // Define useField custom hook for textField
 const useField = (initialState) => {
@@ -21,7 +22,8 @@ const useField = (initialState) => {
 };
 
 export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
-  const authState = useSelector((state) => state.auth);
+  useAxiosInterceptor()
+
   const createArticleMutation = useMutation({
     mutationFn: postArticleRequest,
     onSuccess: () => {
@@ -34,6 +36,7 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
         setPopup(!popup);
       }
     },
+    retry: 3,
   });
 
   const title = useField("");
@@ -77,7 +80,6 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
                 subtitle: subtitle.value,
                 imgURL: imgURL.value,
                 markdown: markdown.value,
-                token: authState.accessToken,
               });
             }}
             className="z-50 bg-soapStone rounded-2xl p-2 m-2"
@@ -97,19 +99,20 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
 };
 
 export const DeleteArticle = ({ popup, setPopup, errorPopup, setErrorPopup ,id }) => {
-  const authState = useSelector((state) => state.auth);
+  useAxiosInterceptor()
+
   const deleteArticleMutation = useMutation({
     mutationFn: deleteArticleRequest,
     onSuccess: () => {
       window.location.reload();
     },
     onError: (error) => {
-      console.log(error);
       setErrorPopup(error)
       if (error.response.status === 440) {
         setPopup(!popup);
       }
     },
+    retry: 3,
   });
 
   return (
@@ -126,7 +129,7 @@ export const DeleteArticle = ({ popup, setPopup, errorPopup, setErrorPopup ,id }
               {
                 setPopup(!popup);
               }
-              deleteArticleMutation.mutate({ id, token: authState.accessToken });
+              deleteArticleMutation.mutate({ id});
             }}
           >
             Delete
@@ -144,7 +147,7 @@ export const DeleteArticle = ({ popup, setPopup, errorPopup, setErrorPopup ,id }
 };
 
 export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, article }) => {
-  const authState = useSelector((state) => state.auth);
+  useAxiosInterceptor()
 
   const putArticleMutation = useMutation({
     mutationFn: editArticleRequest,
@@ -152,12 +155,12 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
       window.location.reload();
     },
     onError: (error) => {
-      console.log(error);
       setErrorPopup(error)
       if (error.response.status === 440) {
         setPopup(!popup);
       }
     },
+    retry: 3,
   });
 
   const title = useField(article.title);
@@ -203,7 +206,6 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
                 imgURL: imgURL.value,
                 markdown: markdown.value,
                 id: article.id,
-                token: authState.accessToken,
               });
             }}
             className="z-50 bg-soapStone rounded-2xl p-2 m-2"

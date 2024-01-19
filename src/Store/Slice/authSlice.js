@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { refresh, logout } from "../../Requests/AuthRequests";
+
 const initialState = {...JSON.parse(localStorage.getItem("authState"))|| null};
 
 const authSlice = createSlice({
@@ -14,10 +16,12 @@ const authSlice = createSlice({
         },
         deleteAuth(state, action){
             localStorage.removeItem("authState");
+            logout()
             return null
         },
         refreshToken(state, action){
-
+            refresh()
+            return state
         }
     }
 })

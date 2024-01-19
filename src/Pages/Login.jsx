@@ -36,7 +36,6 @@ const Login = () => {
       navigate('/Blog')
     } catch (err) {
       setIsPending(false);
-      console.log(err)
       window.alert(err);
     }
   };

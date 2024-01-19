@@ -15,15 +15,15 @@ const Article = () => {
     }, [])
 
     return (
-        <div className='pb-24 px-4 lg:p-24 font-roboto'>
-            <div className='p-12 lg:p-24 bg-soapStone rounded-2xl bg-opacity-40 relative'>
+        <div className='pb-24 px-4 lg:p-24 font-roboto text-wrap'>
+            <div className='p-6 lg:p-24 bg-soapStone rounded-2xl bg-opacity-40 relative'>
                 <button className='absolute top-0 right-0 p-4' onClick={() => navigate('/blog')}>
                     <img src={backIcon} className='object-contain h-8 w-8'/>
                 </button>
                 <h1 className='text-5xl font-semibold oliveDark font-roboto'>{article?.title}</h1>
                 <h2 className=' text-gray-500 font-normal'>{article?.subtitle}</h2>
                 <p className=''>{article?.updatedAt && new Date(article.updatedAt).toLocaleDateString('en-US')}</p>
-                <MarkdownDisplayer markdown={article?.markdown} className='list-disc' />
+                <MarkdownDisplayer markdown={"---\n" + article?.markdown} className='list-disc' />
             </div>
         </div>
     )

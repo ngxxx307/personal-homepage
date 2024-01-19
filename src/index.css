@@ -267,7 +267,13 @@
   td {
     display: table-cell;
     vertical-align: inherit;
-    border: 2px solid #ddd;
+    padding: 0px 10px;
+    text-align: left;
+  }
+
+  th{
+    padding: 0px 10px;
+    text-align: left;
   }
 
   tr {
@@ -285,6 +291,8 @@
     display: table-header-group;
     vertical-align: middle;
     border-color: inherit;
+    text-align: left;
+    padding: 0px 25px
   }
 
   pre {
@@ -315,5 +323,9 @@
     margin-left: 0;
     margin-right: 0;
     padding-left: 40px;
+  }
+
+  code {
+    text-wrap: wrap;
   }
 }

@@ -4,13 +4,17 @@ import remarkGfm from "remark-gfm";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import emoji from "remark-emoji";
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import rehypeRaw from 'rehype-raw'
 
 const MarkdownDisplayer = ({ markdown }) => {
   return (
     <div className="prose">
       <ReactMarkdown
         children={markdown}
-        remarkPlugins={[[remarkGfm], [emoji]]}
+        remarkPlugins={[remarkMath, remarkGfm, emoji]}
+        rehypePlugins={[rehypeKatex, rehypeRaw]}
         components={{
           code(props) {
             const { children, className, node, ...rest } = props;
@@ -24,9 +28,7 @@ const MarkdownDisplayer = ({ markdown }) => {
                 style={atomOneDark}
               />
             ) : (
-              <code {...rest} className={className}>
-                {children}
-              </code>
+              <code {...rest} className={className}>{children}</code>
             );
           },
         }}

@@ -5,6 +5,7 @@ function ScrollToAnchor() {
   const location = useLocation();
   const lastHash = useRef('');
 
+  // Source code from https://dev.to/mindactuate/scroll-to-anchor-element-with-react-router-v6-38op
   // listen to location change using useEffect with location as dependency
   // https://jasonwatmore.com/react-router-v6-listen-to-location-route-change-without-history-listen
   useEffect(() => {

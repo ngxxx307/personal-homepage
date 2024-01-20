@@ -1,24 +1,31 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import ScrollToAnchor from "./ScrollToAnchor";
 
 const Navbar = () => {
+  ScrollToAnchor()
+
   const navbarData = [
     {
       id: 1,
       name: "Home",
+      location: "#Home",
     },
     {
       id: 2,
       name: "About",
+      location: "#About",
     },
     {
       id: 3,
       name: "Blog",
+      location: "Blog"
     },
     {
       id: 4,
       name: "Contact",
+      location: "#Contact"
     },
   ];
 
@@ -28,8 +35,7 @@ const Navbar = () => {
   const [clicked, setClicked] = useState(pathname.includes("/Blog")? 3: 1);
   const [scrolled, setScrolled] = useState(false);
 
-  console.log(hash, pathname, search )
-
+  // Add Grey Background if scrolled
   const handleScrolled = () => {
     if (window.scrollY > 50) {
       setScrolled(true);
@@ -38,21 +44,13 @@ const Navbar = () => {
     }
   };
 
+  // Listening to scroll events
   useEffect(() => {
     window.addEventListener("scroll", handleScrolled);
     return () => {
       window.removeEventListener("scroll", handleScrolled);
     };
   }, []);
-  
-  useEffect(() => {
-    console.log(navbarData[clicked - 1].name)
-    try{
-      document.getElementById(navbarData[clicked - 1].name).scrollIntoView({behavior: "smooth", block: "center",})
-    } catch (e){
-      console.log(e)
-    }
-  }, [clicked])
 
   return (
     <div className="w-full sticky top-0 justify-center items-center z-10 flex ">
@@ -73,18 +71,8 @@ const Navbar = () => {
                 <button
                   className=" text-oliveGreen font-inter font-medium mx-20 z-20"
                   onClick={() => {
-                    
                     setClicked(item.id)
-
-                    if (pathname === '/'){
-                      item.name !== "Blog" ? document.getElementById(item.name).scrollIntoView({behavior: "smooth", block: "center",})
-                      : navigate('/Blog')
-                    } 
-
-                    if (pathname.includes('/Blog')) {
-                      item.name !== "Blog" ? navigate('/')
-                      : navigate('/Blog')
-                    }
+                    navigate(`/${navbarData[item.id - 1].location}`)
                   }}
                 >
                   {item.name}

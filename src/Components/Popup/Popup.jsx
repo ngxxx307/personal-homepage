@@ -112,6 +112,7 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
 
 export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, article }) => {
   useAxiosInterceptor()
+  console.log("edit popup:", article)
 
   const putArticleMutation = useMutation({
     mutationFn: editArticleRequest,
@@ -133,8 +134,6 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
   const markdown = useField(article.markdown);
   const [publicStatus, setPublicStatus] = useState(article.public)
 
-  console.log(publicStatus)
-
   return (
     <div>
         <div>
@@ -142,24 +141,23 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
           <textarea
             className="w-[50%] outline outline-2 p-2"
             placeholder="Title"
-            onChange={title.onChange}
+            {...title}
           ></textarea>
           <textarea
             className="w-[50%] outline outline-2 p-2"
             placeholder="Subtitle"
-            onChange={subtitle.onChange}
+            {...subtitle}
           ></textarea>
           <textarea
             className="w-full outline outline-2 p-2"
             placeholder="imgURL"
-            onChange={imgURL.onChange}
+            {...imgURL}
           ></textarea>
           <textarea
             className="w-[50%] h-[75%] outline outline-2 p-2"
             placeholder="Type your markdown here..."
             {...markdown}
           >
-            {" "}
           </textarea>
           <div className="w-[50%] h-[75%] outline outline-2 overflow-scroll bg-white p-2">
             <MarkdownDisplayer markdown={markdown.value} />

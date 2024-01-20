@@ -27,8 +27,7 @@ const ArticleList = () => {
     return <div>Error</div>;
   }
   const articles = result.data;
-
-  console.log(articles)
+  
   return (
     <div className="px-2 lg:px-24">
       <div

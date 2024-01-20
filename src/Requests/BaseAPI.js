@@ -14,7 +14,6 @@ const api = axios.create({
 const addHeader = () => {
     const authState = store.getState().auth
     if (authState.accessToken) {
-        console.log("token:", authState.accessToken)
         api.defaults.headers.common['authorization'] = `Bearer ${authState.accessToken}`;
     }
 }

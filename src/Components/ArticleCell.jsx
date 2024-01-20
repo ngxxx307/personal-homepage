@@ -14,6 +14,8 @@ const ArticleCell = ({article}) => {
   const [editPopup, setEditPopup] = useState(false)
   const [errorPopup, setErrorPopup] = useState(null);
 
+  console.log(article)
+
   return (
     <div>
       <Link to={`/Blog/Article/${article.id}`} className='  no-underline'>
@@ -22,12 +24,17 @@ const ArticleCell = ({article}) => {
         <div className='grid grid-cols-2'>
           <div className='text-left w-full font-roboto text-medium'>{new Date(article.createdAt).toDateString()}</div>
           {authState?.accessToken && authState?.roles?.includes("admin") && <div className='flex flex-row-reverse'>
-            {<button>
+            <button>
               <img src={DeleteButton} className='object-contain	h-6 w-6 mx-1' onClick={() => setDeletePopup(!deletePopup)}></img>
-            </button>}
+            </button>
             <button>
               <img src={EditButton} className='object-contain	h-6 w-6 mx-1' onClick={() => setEditPopup(!editPopup)}></img>
             </button>
+            {article.public === false && <div>
+              <div className='border-2 border-yellow-700 text-yellow-700 px-2 rounded-md'>
+                private
+              </div>
+            </div>}
           </div>}
         </div>
         { deletePopup && <DeleteArticle popup={deletePopup} setPopup={setDeletePopup} id={article.id} errorPopup={errorPopup} setErrorPopup={setErrorPopup} />}

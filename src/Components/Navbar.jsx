@@ -28,6 +28,8 @@ const Navbar = () => {
   const [clicked, setClicked] = useState(pathname.includes("/Blog")? 3: 1);
   const [scrolled, setScrolled] = useState(false);
 
+  console.log(hash, pathname, search )
+
   const handleScrolled = () => {
     if (window.scrollY > 50) {
       setScrolled(true);

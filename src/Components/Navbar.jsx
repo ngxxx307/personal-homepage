@@ -25,7 +25,7 @@ const Navbar = () => {
   const { hash, pathname, search } = location;
   const navigate = useNavigate()
 
-  const [clicked, setClicked] = useState(1);
+  const [clicked, setClicked] = useState(pathname.includes("/Blog")? 3: 1);
   const [scrolled, setScrolled] = useState(false);
 
   const handleScrolled = () => {

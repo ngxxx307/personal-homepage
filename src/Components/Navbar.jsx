@@ -32,7 +32,18 @@ const Navbar = () => {
   const { hash, pathname, search } = location;
   const navigate = useNavigate()
 
-  const [clicked, setClicked] = useState(pathname.includes("/Blog")? 3: navbarData.map(data => data.location).indexOf(hash) + 1);
+  let initialState;
+  const index = navbarData.map(data => data.location).indexOf(hash)
+  if (pathname.includes("/Blog")) {
+    initialState = 3
+  } else if (index !== -1) {
+    initialState = index + 1
+  } else {
+    initialState = 1
+  }
+  
+  const [clicked, setClicked] = useState(initialState);
+  console.log(clicked)
   const [scrolled, setScrolled] = useState(false);
 
   // Add Grey Background if scrolled

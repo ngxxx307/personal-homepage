@@ -4,6 +4,7 @@ import { fadeInDropAnimation } from "../../Animation/Animation";
 
 import gopherIcon from "../../assets/SchoolsIcon/umn.png";
 import lseIcon from "../../assets/SchoolsIcon/lse.webp";
+import profilePicture from "../../assets/profilePicture.jpg"
 
 const About = () => {
   return (
@@ -14,7 +15,7 @@ const About = () => {
         </motion.p>
         <motion.div className="flex flex-wrap w-full px-0 lg:px-12 py-10" {...fadeInDropAnimation} transition={{ duration: 0.3, delay: 0.4 }}>
           <div className="w-full lg:w-1/4 px-10">
-            <img src="https://www.seanhalpin.xyz/about/faces.jpg" className="rounded-t-full"></img>
+            <img src={profilePicture} className="rounded-t-full"></img>
           </div>
           <div className="w-full lg:w-3/4 px-10 text-left	">
             <p>

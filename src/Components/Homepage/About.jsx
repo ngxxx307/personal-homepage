@@ -11,25 +11,35 @@ const About = () => {
     <div>
       <div id="About" className=" text-oliveGreen font-syne text-center py-10">
         <motion.p className="text-7xl lg:text-9xl my-2 font-semibold " {...fadeInDropAnimation}>
-          About Me.
+          My Journey 
         </motion.p>
         <motion.div className="flex flex-wrap w-full px-0 lg:px-12 py-10" {...fadeInDropAnimation} transition={{ duration: 0.3, delay: 0.4 }}>
-          <div className="w-full lg:w-1/4 px-10">
+          <div className="w-full lg:w-1/4 p-10">
             <img src={profilePicture} className="rounded-t-full"></img>
           </div>
-          <div className="w-full lg:w-3/4 px-10 text-left	">
+          <div className="w-full lg:w-3/4 p-10 text-left	">
             <p>
-              (chatGPT generated content) As a recent graduate with a Bachelor
-              of Science in Psychology from the University of Minnesota, I have
-              developed a strong foundation in understanding human behavior and
-              mental processes. My passion for psychology has driven me to
-              pursue a Master of Science in Applied Social Data Science from the
-              London School of Economics, \ I gained expertise in using data
-              to solve real-world problems. Since graduating two years ago, I
-              have been applying my knowledge and skills to make a positive
-              impact in the field. I am excited to leverage my expertise to help
-              organizations make data-driven decisions that improve people’s
-              lives.
+            I graduated with a BSc in Psychology from the University of Minnesota 
+            and became a QA engineer afterwards. During my QA job, I had the opportunity
+             to get exposed to different automated testing technologies, such as 
+             Selenium and Cypress. I enjoy taking on challenges and therefore built
+              a backend API service for testing the synchronization between frontend 
+              display and backend storage.
+              <br></br>
+              <br></br>
+              Later on, I started pursuing a Master’s degree in Applied Social Data Science. 
+              I believe that artificial intelligence will fundamentally change the way we 
+              live in the future. Studying advanced statistical topics such as Bayesian 
+              Machine Learning is challenging, but it has enlightened my passion in the 
+              realms of mathematics and statistics. Reading and learning mathematics has 
+              since become my hobby. I have just finished the book <i>How to Prove It</i> and 
+              started reading <i>Understanding Analysis</i>.
+              <br></br>
+              <br></br>
+              My dream is to build a software system that utilize the power of AI
+              to solve human's everyday issue and change the world in the future.
+              Feel free to drop a message below if you have any questions or would
+              like to discuss this further, please don’t hesitate to reach out to me! 
             </p>
           </div>
         </motion.div>

@@ -177,7 +177,7 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
               className="z-50 bg-soapStone rounded-2xl p-2 m-2">
               Edit
             </button>
-            <label class="inline-flex relative items-center mr-5 cursor-pointer">
+            <label className="inline-flex relative items-center mr-5 cursor-pointer">
                       <input
                           type="checkbox"
                           className="sr-only peer"

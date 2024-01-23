@@ -43,7 +43,6 @@ const Navbar = () => {
   }
   
   const [clicked, setClicked] = useState(initialState);
-  console.log(clicked)
   const [scrolled, setScrolled] = useState(false);
 
   // Add Grey Background if scrolled

@@ -14,7 +14,6 @@ const ArticleCell = ({article}) => {
   const [editPopup, setEditPopup] = useState(false)
   const [errorPopup, setErrorPopup] = useState(null);
 
-  console.log("article cell", article)
   return (
     <div>
       <Link to={`/Blog/Article/${article.id}`} className='  no-underline'>

@@ -103,7 +103,9 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
       <div
         id="popup-overlay"
         onClick={() => {
-          setPopup(!popup);
+          if (confirm("Are you sure you want to leave now? All text will not be saved") == true) {
+            setPopup(!popup);
+          }
         }}
       />
     </div>
@@ -174,7 +176,7 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
                 });
               }}
               className="z-50 bg-soapStone rounded-2xl p-2 m-2">
-              Create
+              Edit
             </button>
             <label class="inline-flex relative items-center mr-5 cursor-pointer">
                       <input
@@ -193,7 +195,9 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
         <div
           id="popup-overlay"
           onClick={() => {
-            setPopup(!popup);
+            if (confirm("Are you sure you want to leave now? All text will not be saved") == true) {
+              setPopup(!popup);
+            }
           }}
         />
       </div>

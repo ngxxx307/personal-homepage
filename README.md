@@ -26,5 +26,6 @@ npm run dev
 
 ## TODO LIST:
 1. Fix Refresh token expired issue
+2. Fix issue if rehype parser has error
 3. Add more functionality to login page
 6. Add Contact functionality

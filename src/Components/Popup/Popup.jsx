@@ -114,7 +114,6 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
 
 export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, article }) => {
   useAxiosInterceptor()
-  console.log("edit popup:", article)
 
   const putArticleMutation = useMutation({
     mutationFn: editArticleRequest,
@@ -287,8 +286,6 @@ export const Logout = ({ popup, setPopup, id }) => {
 
 export const ErrorMessage = ({ error, setError, id }) => {
   const dispatch = useDispatch();
-
-  console.log("error:", error)
 
   return (
     <div>

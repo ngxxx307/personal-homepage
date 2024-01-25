@@ -26,5 +26,7 @@ npm run dev
 
 ## TODO LIST:
 1. Fix Refresh token expired issue
-3. Add more functionality to login page
+2. Only load preview of article at "/Blog"
+3. Fix issue if rehype parser has error
+4. Add more functionality to login page
 6. Add Contact functionality

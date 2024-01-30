@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 
 import MarkdownDisplayer from "../MarkdownDisplayer";
-import { postArticleRequest, editArticleRequest, deleteArticleRequest } from "../../Requests/Request";
+import { postArticleRequest, editArticleRequest, deleteArticleRequest } from "../../Requests/ArticleRequest";
 import { authAction } from "../../Store/Slice/authSlice";
 import { useAxiosInterceptor } from "../../Requests/BaseAPI";
 
@@ -42,6 +42,7 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
   const title = useField("");
   const subtitle = useField("");
   const imgURL = useField("");
+  const hashtags = useField("");
   const markdown = useField("");
   const [publicStatus, setPublicStatus] = useState(false)
 
@@ -59,9 +60,14 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
           onChange={subtitle.onChange}
         ></textarea>
         <textarea
-          className="w-full outline outline-2 p-2"
+          className="w-[50%] outline outline-2 p-2"
           placeholder="imgURL"
           onChange={imgURL.onChange}
+        ></textarea>
+        <textarea
+          className="w-[50%] outline outline-2 p-2"
+          placeholder="hashtags"
+          onChange={hashtags.onChange}
         ></textarea>
         <textarea
           className="w-[50%] h-[75%] outline outline-2 p-2"
@@ -79,14 +85,15 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
                 title: title.value,
                 subtitle: subtitle.value,
                 imgURL: imgURL.value,
+                hashtags: hashtags.value,
                 markdown: markdown.value,
-                public: publicStatus
+                publicStatus
               });
             }}
             className="z-50 bg-soapStone rounded-2xl p-2 m-2">
             Create
           </button>
-          <label class="inline-flex relative items-center mr-5 cursor-pointer">
+          <label className="inline-flex relative items-center mr-5 cursor-pointer">
                     <input
                         type="checkbox"
                         className="sr-only peer"
@@ -132,7 +139,9 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
   const title = useField(article.title);
   const subtitle = useField(article.subtitle);
   const imgURL = useField(article.imgURL);
+  const hashtags = useField(article.hashtags);
   const markdown = useField(article.markdown);
+  
   const [publicStatus, setPublicStatus] = useState(article.public)
 
   return (
@@ -150,9 +159,14 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
             {...subtitle}
           ></textarea>
           <textarea
-            className="w-full outline outline-2 p-2"
+            className="w-[50%] outline outline-2 p-2"
             placeholder="imgURL"
             {...imgURL}
+          ></textarea>
+                    <textarea
+            className="w-[50%] outline outline-2 p-2"
+            placeholder="hashtags"
+            {...hashtags}
           ></textarea>
           <textarea
             className="w-[50%] h-[75%] outline outline-2 p-2"
@@ -169,6 +183,7 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
                   title: title.value,
                   subtitle: subtitle.value,
                   imgURL: imgURL.value,
+                  hashtags: hashtags.value,
                   markdown: markdown.value,
                   publicStatus,
                   id: article.id,
@@ -292,7 +307,7 @@ export const ErrorMessage = ({ error, setError, id }) => {
       <div className="fixed top-[50%] left-[50%] z-50 -translate-x-1/2 -translate-y-1/2 grid items-center rounded-xl bg-amber-50 text-center p-4">
         <div className="p-4">
         <p>Error</p>
-          <p>{error.response.data.message}</p>
+          <p>{error.response?.data.message}</p>
         </div>
         <div>
           <button

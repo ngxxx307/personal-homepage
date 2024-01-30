@@ -13,8 +13,6 @@ function ScrollToAnchor() {
     if (location.hash) {
       lastHash.current = location.hash.slice(1); // safe hash for further use after navigation
     }
-    // console.log("hash", location.hash)
-    // console.log("current", lastHash.current)
 
     if (lastHash.current && document.getElementById(lastHash.current)) {
       setTimeout(() => {

@@ -1,4 +1,4 @@
-import api, {addHeader} from './BaseAPI'
+import api, { addHeader } from './BaseAPI'
 
 export const getArticles = () => {
     addHeader()
@@ -13,10 +13,10 @@ export const getArticle = (id) => {
     })}
 
 export const postArticleRequest = (newArticle) => {
-    const { title, subtitle, markdown, imgURL} = newArticle
-    addHeader()
+    const { title, subtitle, markdown, imgURL, hashtags, publicStatus} = newArticle
 
-    return api.post(`/api/article`, {title, subtitle, markdown, imgURL}).then(res => {
+    addHeader()
+    return api.post(`/api/article`, {title, subtitle, markdown, imgURL, hashtags, publicStatus:publicStatus}).then(res => {
         return res.data
     })
 }
@@ -31,10 +31,10 @@ export const deleteArticleRequest = (data) => {
 }
 
 export const editArticleRequest = (article) => {
-    const { title, subtitle, markdown, imgURL, publicStatus } = article
+    const { title, subtitle, markdown, imgURL, hashtags, publicStatus } = article
     addHeader()
 
-    return api.put(`/api/article/${article.id}`, {title, subtitle, markdown, imgURL, public:publicStatus}).then(res => {
+    return api.put(`/api/article/${article.id}`, {title, subtitle, markdown, imgURL, hashtags, public:publicStatus}).then(res => {
         return res.data
     })
 }

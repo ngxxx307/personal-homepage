@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import MarkdownDisplayer from '../Components/MarkdownDisplayer'
-import { getArticle } from '../Requests/Request'
+import { getArticle } from '../Requests/ArticleRequest'
 import backIcon from "../assets/backIcon.png"
 
 const Article = () => {
-    const [article, setArticle] = useState({markdown: null})
+    const [article, setArticle] = useState({markdown: ''})
     const id = useParams().id
     const navigate = useNavigate()
 

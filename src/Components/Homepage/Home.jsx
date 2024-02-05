@@ -10,11 +10,9 @@ import reduxIcon from "../../assets/FrontendIcon/redux.png";
 import cssIcon from "../../assets/FrontendIcon/CSS.png";
 import nodejsIcon from "../../assets/BackendIcon/nodejs.png";
 import expressIcon from "../../assets/BackendIcon/expressjs.png";
-import transformerImage from "../../assets/MLIcon/machineLearning.png";
+import transformerImage from "../../assets/MLIcon/EM.gif";
 import mongodbIcon from "../../assets/DatabaseIcon/MongoDB.png";
 import mysqlIcon from "../../assets/DatabaseIcon/mysql.png";
-// import { importAll } from "../../utils/utils";
-// importAll('../assets/FrontendIcon', '/\.png/')
 
 const FRONTENDIMAGES = [
   { url: reactIcon, alt: "react", id: 1 },

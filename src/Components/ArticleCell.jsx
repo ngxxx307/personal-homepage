@@ -15,12 +15,18 @@ const ArticleCell = ({article}) => {
   const [errorPopup, setErrorPopup] = useState(null);
 
   return (
-    <div>
+    <div className='my-2'>
       <Link to={`/Blog/Article/${article.id}`} className='  no-underline'>
        <h1 className='text-oliveDark font-roboto font-semibold'>{article.title}</h1>
       </Link>
-        <div className='grid grid-cols-2'>
-          <div className='text-left w-full font-roboto text-medium'>{new Date(article.createdAt).toDateString()}</div>
+      <div className='text-left w-full font-roboto text-medium'>{new Date(article.createdAt).toDateString()}</div>
+        <div className='flex mt-2'>
+          <div className='flex grow gap-x-2'>
+          {article.hashtags.map(hashtag => 
+            <div className=' px-2 py-1 rounded-3xl bg-gray-300 bg-opacity-75 font-light ' key={hashtag}>
+              {hashtag}
+            </div>)}
+          </div>
           {authState?.accessToken && authState?.roles?.includes("admin") && <div className='flex flex-row-reverse'>
             <button>
               <img src={DeleteButton} className='object-contain	h-6 w-6 mx-1' onClick={() => setDeletePopup(!deletePopup)}></img>
@@ -36,7 +42,7 @@ const ArticleCell = ({article}) => {
           </div>}
         </div>
         { deletePopup && <DeleteArticle popup={deletePopup} setPopup={setDeletePopup} id={article.id} errorPopup={errorPopup} setErrorPopup={setErrorPopup} />}
-        { editPopup && <EditArticle popup={editPopup} setPopup={setEditPopup} article={article} errorPopup={errorPopup} setErrorPopup={setErrorPopup} />}
+        { editPopup && <EditArticle popup={editPopup} setPopup={setEditPopup} articleID={article.id} errorPopup={errorPopup} setErrorPopup={setErrorPopup} />}
         { errorPopup && <ErrorMessage error={errorPopup} setError={setErrorPopup} />}
     </div>
   )

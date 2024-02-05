@@ -1,25 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 import MarkdownDisplayer from "../MarkdownDisplayer";
-import { postArticleRequest, editArticleRequest, deleteArticleRequest } from "../../Requests/ArticleRequest";
+import { postArticleRequest, editArticleRequest, deleteArticleRequest, getArticle } from "../../Requests/ArticleRequest";
 import { authAction } from "../../Store/Slice/authSlice";
 import { useAxiosInterceptor } from "../../Requests/BaseAPI";
-
-// Define useField custom hook for textField
-const useField = (initialState) => {
-  const [value, setValue] = useState(initialState);
-
-  const onChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  return {
-    value,
-    onChange,
-  };
-};
+import { useField } from "../../hooks/hooks";
 
 export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
   useAxiosInterceptor()
@@ -81,11 +69,12 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
         </div>
         <div className="flex flex-row-reverse w-full">
           <button onClick={() => {
+              parsed 
               createArticleMutation.mutate({
                 title: title.value,
                 subtitle: subtitle.value,
                 imgURL: imgURL.value,
-                hashtags: hashtags.value,
+                hashtags: hashtags.value.split('#').slice(1).map(hashtag => hashtag.replace(/^\s+|\s+$/gm, '')),
                 markdown: markdown.value,
                 publicStatus
               });
@@ -119,7 +108,7 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
   );
 };
 
-export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, article }) => {
+export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articleID }) => {
   useAxiosInterceptor()
 
   const putArticleMutation = useMutation({
@@ -136,13 +125,23 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
     retry: 3,
   });
 
-  const title = useField(article.title);
-  const subtitle = useField(article.subtitle);
-  const imgURL = useField(article.imgURL);
-  const hashtags = useField(article.hashtags);
-  const markdown = useField(article.markdown);
-  
-  const [publicStatus, setPublicStatus] = useState(article.public)
+  const title = useField('');
+  const subtitle = useField('');
+  const imgURL = useField('');
+  const hashtags = useField('');
+  const markdown = useField('');
+  const [publicStatus, setPublicStatus] = useState(false)
+
+  useEffect(()=> {
+    getArticle(articleID).then(article => {
+      title.setValue(article.title)
+      subtitle.setValue(article.subtitle)
+      imgURL.setValue(article.imgURL)
+      hashtags.setValue(article.hashtags.map(element => '#' + element).join(''))
+      markdown.setValue(article.markdown)
+      setPublicStatus(article.publicStatus)
+    })
+}, [])
 
   return (
     <div>
@@ -183,10 +182,10 @@ export const EditArticle = ({ popup, setPopup, errorPopup, setErrorPopup, articl
                   title: title.value,
                   subtitle: subtitle.value,
                   imgURL: imgURL.value,
-                  hashtags: hashtags.value,
+                  hashtags: hashtags.value.split('#').slice(1).map(hashtag => hashtag.replace(/^\s+|\s+$/gm, '')),
                   markdown: markdown.value,
                   publicStatus,
-                  id: article.id,
+                  id: articleID,
                 });
               }}
               className="z-50 bg-soapStone rounded-2xl p-2 m-2">

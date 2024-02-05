@@ -1,14 +1,20 @@
 import api, { addHeader } from './BaseAPI'
 
-export const getArticles = () => {
+export const getArticles = ({queryKey}) => {
     addHeader()
-    return api.get(`/api/article`).then(res => {
+    return api.get(`/api/article`,{params: {title: queryKey[1], hashtags: queryKey[2]}}).then(res => {
         return res.data
     })
 }
 
 export const getArticle = (id) => {
     return api.get(`/api/article/${id}`).then(res => {
+        return res.data
+    })}
+
+export const getHashtags = () => {
+    addHeader()
+    return api.get(`/api/article/hashtags`).then(res => {
         return res.data
     })}
 

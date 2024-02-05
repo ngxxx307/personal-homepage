@@ -25,13 +25,13 @@ const SearchBar = ({searchQuery, setSearchQuery, selectedTags, setSelectedTags})
 
     const hashtagsOptions = []
 
+
     for (const key in hashtags) {
       hashtagsOptions.push({
-        value: hashtags[key],
+        value: key,
         label: key
       })
     }
-
     
   return (
     <div className='px-8'>

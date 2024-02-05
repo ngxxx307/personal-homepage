@@ -4,7 +4,6 @@ import rehypeHighlight from 'rehype-highlight'
 
 const MarkdownEditor = () => {
     const [value, setValue] = React.useState("**Hello world!!!**");
-    console.log(value)
     return (
       <div className="container">
         <MDEditor

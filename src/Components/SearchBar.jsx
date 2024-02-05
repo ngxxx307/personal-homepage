@@ -14,9 +14,6 @@ const SearchBar = ({searchQuery, setSearchQuery, selectedTags, setSelectedTags})
         queryFn: getHashtags,
     });
 
-    if (hashtagsResult.isLoading) {
-        return <div></div>;
-    }
     if (hashtagsResult.isError) {
         return <div></div>;
     }
@@ -35,9 +32,9 @@ const SearchBar = ({searchQuery, setSearchQuery, selectedTags, setSelectedTags})
     
   return (
     <div className='px-8'>
-      <div className="flex bg-white bg-opacity-50 rounded-3xl px-8 py-4 m-4  items-center transition-all duration-100">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input className="grow mx-4 px-4 py-2 inline-block align-baseline bg-transparent outline-none focus:text-3xl transition-all duration-100" placeholder="Title"
+      <div className="flex bg-white bg-opacity-50 rounded-3xl px-8 py-4 m-4 items-center transition-all duration-100">
+          <i class="fa-solid fa-magnifying-glass mr-4"></i>
+          <input className="hidden lg:inline-block grow mx-4 px-4 py-2 align-baseline bg-transparent outline-none focus:text-3xl transition-all duration-100" placeholder="Title"
               onChange={(e) => setSearchQuery(e.target.value)}
               value={searchQuery}
           >
@@ -49,8 +46,7 @@ const SearchBar = ({searchQuery, setSearchQuery, selectedTags, setSelectedTags})
               onChange={(change) => {
                   setSelectedTags(change?.map(selected => selected.label))
           }}
-          className="w-[25%]"
-      />
+          className="w-full lg:w-[25%]"/>
       </div>
     </div>
   )

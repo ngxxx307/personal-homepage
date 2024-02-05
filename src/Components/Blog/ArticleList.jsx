@@ -29,13 +29,11 @@ const ArticleList = ({debouncedQuery, searchQuery, selectedTags}) => {
       return <ErrorPage />;
   }
 
-  
   const articles = articlesResult.data;
-  console.log(articles.length)
 
   return (
     <div className="p-2 lg:px-24">
-      {articles.length === 0 && <div className="px-8">No Article found...</div>}
+      {articles?.length === 0 && <div className="px-8">No Article found...</div>}
       <div
         id="BlogList"
         className=" bg-soapStone rounded-2xl bg-opacity-50 divide-y divide-dark w-auto px-8">

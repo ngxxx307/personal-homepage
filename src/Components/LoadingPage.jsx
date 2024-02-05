@@ -2,7 +2,7 @@ import React from 'react'
 
 const DummyArticle = () => {
   return (
-    <div className='my-2 font-roboto text-medium' >
+    <div className='my-2 font-roboto text-medium px-16 py-4' >
       <div className='flex flex-col mt-2 gap-y-2'>
         <div className='h-12 w-[50%] loading-background'>
         </div>
@@ -25,15 +25,17 @@ const DummyArticle = () => {
 
 const LoadingPage = () => {
   return (
-    <div className='bg-soapStone rounded-2xl bg-opacity-50 divide-y divide-dark w-auto p-2 lg:px-24'>
-      {(()  => {
-        const td = []
-        for (let i = 0; i < 5; i++) {
-          td.push(<DummyArticle key={i} />)
-        }
-        return td
-      })()
+    <div className='p-2 lg:px-24'>
+      <div className='bg-soapStone rounded-2xl bg-opacity-50 divide-y divide-dark w-auto'>
+        {(()  => {
+          const td = []
+          for (let i = 0; i < 5; i++) {
+            td.push(<DummyArticle key={i} />)
+          }
+          return td
+        })()
       }
+    </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 # Kurt's Ng Personal Hompage
-[Link to my website](https://kurt-ng.com").
+[Link to my website](https://kurt-ng.com).
 ## Frontend Tech used:
 1. React
 2. React Query

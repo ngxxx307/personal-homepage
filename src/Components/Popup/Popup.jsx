@@ -69,7 +69,6 @@ export const CreateArticle = ({ popup, setPopup, setErrorPopup }) => {
         </div>
         <div className="flex flex-row-reverse w-full">
           <button onClick={() => {
-              parsed 
               createArticleMutation.mutate({
                 title: title.value,
                 subtitle: subtitle.value,

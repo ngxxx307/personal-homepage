@@ -1,4 +1,5 @@
 # Kurt's Ng Personal Hompage
+[Link to my website](https://kurt-ng.com").
 ## Frontend Tech used:
 1. React
 2. React Query
@@ -26,7 +27,5 @@ npm run dev
 
 ## TODO LIST:
 1. Fix Refresh token expired issue
-2. Only load preview of article at "/Blog"
-3. Fix issue if rehype parser has error
-4. Add more functionality to login page
-6. Add Contact functionality
+4. Add Oauth login
+6. Add email functionality to contact
